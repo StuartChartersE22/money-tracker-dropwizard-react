@@ -8,25 +8,29 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+@Entity
+@Table(name = "transactions")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "transaction_type")
 public class Transaction implements IDB {
     private int id;
     private String name;
     private Trip trip;
-    private float amount;
+    private int amount;
     private Calendar date;
     private boolean isBusiness;
     private List<Tag> tags;
-    protected List<Person> borrowings;
+    protected List<Person> lendings;
 
     public Transaction() {}
 
-    public Transaction(String name, float amount, Calendar date, boolean isBusiness, Trip trip) {
+    public Transaction(String name, int amount, Calendar date, boolean isBusiness, Trip trip) {
         this.name = name;
         this.amount = amount;
         this.date = date;
         this.isBusiness = isBusiness;
         this.tags = new ArrayList<>();
-        this.borrowings = new ArrayList<>();
+        this.lendings = new ArrayList<>();
         this.trip = trip;
     }
 
@@ -63,11 +67,11 @@ public class Transaction implements IDB {
     }
 
     @Column(name = "amount")
-    public float getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 
@@ -111,11 +115,11 @@ public class Transaction implements IDB {
             joinColumns = {@JoinColumn (name = "trans_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn (name = "person_id", nullable = false)}
     )
-    public List<Person> getBorrowings() {
-        return borrowings;
+    public List<Person> getLendings() {
+        return lendings;
     }
 
-    public void setBorrowings(List<Person> borrowings) {
-        this.borrowings = borrowings;
+    public void setLendings(List<Person> lendings) {
+        this.lendings = lendings;
     }
 }

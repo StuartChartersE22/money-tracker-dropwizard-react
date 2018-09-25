@@ -7,16 +7,18 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+@Entity
+@Table(name = "trips")
 public class Trip implements IDB {
     private int id;
     private String name;
-    private float budget;
+    private int budget;
     private boolean isCurrent;
     private boolean isBusiness;
     private Calendar date;
     private List<Transaction> transactions;
 
-    public Trip(String name, float budget, boolean isCurrent, boolean isBusiness, Calendar date) {
+    public Trip(String name, int budget, boolean isCurrent, boolean isBusiness, Calendar date) {
         this.name = name;
         this.budget = budget;
         this.isCurrent = isCurrent;
@@ -48,11 +50,11 @@ public class Trip implements IDB {
     }
 
     @Column(name = "budget")
-    public float getBudget() {
+    public int getBudget() {
         return budget;
     }
 
-    public void setBudget(float budget) {
+    public void setBudget(int budget) {
         this.budget = budget;
     }
 
