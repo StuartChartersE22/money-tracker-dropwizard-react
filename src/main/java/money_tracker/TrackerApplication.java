@@ -28,15 +28,10 @@ public class TrackerApplication extends Application<TrackerConfiguration> {
         DateFormat trackerDateFormat = new SimpleDateFormat(configuration.getDateFormat());
         environment.getObjectMapper().setDateFormat(trackerDateFormat);
 
-        TransactionRepo transactionRepo = new TransactionRepo();
-        TripRepo tripRepo = new TripRepo();
-        TagRepo tagRepo = new TagRepo();
-        PersonRepo personRepo = new PersonRepo();
-
-        TransactionResource transactionResource = new TransactionResource(transactionRepo);
-        TripResource tripResource = new TripResource(tripRepo);
-        TagResource tagResource = new TagResource(tagRepo);
-        PersonResource personResource = new PersonResource(personRepo);
+        TransactionResource transactionResource = new TransactionResource();
+        TripResource tripResource = new TripResource();
+        TagResource tagResource = new TagResource();
+        PersonResource personResource = new PersonResource();
 
         environment.jersey().register(transactionResource);
         environment.jersey().register(tripResource);
