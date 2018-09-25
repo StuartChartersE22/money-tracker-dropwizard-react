@@ -12,4 +12,4 @@ public class TrackerConfiguration extends Configuration {
     public String getDateFormat() {
         return dateFormat;
     }
-}}
+}
