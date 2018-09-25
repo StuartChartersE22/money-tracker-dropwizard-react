@@ -1,0 +1,4 @@
+logging:
+  level: INFO
+  loggers:
+    com.stuart.money_tracker: DEBUG
