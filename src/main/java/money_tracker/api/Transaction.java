@@ -10,8 +10,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "transactions")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "transaction_type")
+//@Inheritance(strategy = InheritanceType.JOINED)
+//@DiscriminatorColumn(name = "transaction_type")
 public class Transaction implements IDB {
     private int id;
     private String name;
@@ -56,7 +56,7 @@ public class Transaction implements IDB {
         this.name = name;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "trip_id", nullable = false)
     public Trip getTrip() {
         return trip;
@@ -97,8 +97,8 @@ public class Transaction implements IDB {
     @ManyToMany
     @JoinTable(
             name = "trans_tags",
-            joinColumns = {@JoinColumn (name = "trans_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn (name = "tag_id", nullable = false)}
+            joinColumns = {@JoinColumn (name = "trans_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn (name = "tag_id", nullable = false, updatable = false)}
     )
     public List<Tag> getTags() {
         return tags;
@@ -114,8 +114,8 @@ public class Transaction implements IDB {
     @ManyToMany
     @JoinTable(
             name = "trans_people",
-            joinColumns = {@JoinColumn (name = "trans_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn (name = "person_id", nullable = false)}
+            joinColumns = {@JoinColumn (name = "trans_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn (name = "person_id", nullable = false, updatable = false)}
     )
     public List<Person> getLendings() {
         return lendings;

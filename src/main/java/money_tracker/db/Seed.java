@@ -10,14 +10,13 @@ import money_tracker.core.repos.TagRepo;
 import money_tracker.core.repos.TransactionRepo;
 import money_tracker.core.repos.TripRepo;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Seed {
     public static void seedData() {
-        TransactionRepo.deleteAll();
         TagRepo.deleteAll();
         PersonRepo.deleteAll();
+        TransactionRepo.deleteAll();
         TripRepo.deleteAll();
 
         Tag tag1 = new Tag("Holiday");

@@ -46,8 +46,8 @@ public class Tag implements IDB {
     @ManyToMany
     @JoinTable(
             name = "trans_tags",
-            joinColumns = {@JoinColumn (name = "tag_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn (name = "trans_id", nullable = false)}
+            joinColumns = {@JoinColumn (name = "tag_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn (name = "trans_id", nullable = false, updatable = false)}
     )
     public List<Transaction> getTransactions() {
         return transactions;

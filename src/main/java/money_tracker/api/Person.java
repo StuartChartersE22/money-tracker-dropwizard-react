@@ -48,8 +48,8 @@ public class Person implements IDB {
     @ManyToMany
     @JoinTable(
             name = "trans_people",
-            joinColumns = {@JoinColumn (name = "person_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn (name = "trans_id", nullable = false)}
+            joinColumns = {@JoinColumn (name = "person_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn (name = "trans_id", nullable = false, updatable = false)}
     )
     public List<Transaction> getBorrowings(){
         return this.borrowings;

@@ -85,7 +85,7 @@ public class Trip implements IDB {
         this.date = date;
     }
 
-    @OneToMany(mappedBy = "trip", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "trip", fetch = FetchType.EAGER)
     public List<Transaction> getTransactions() {
         return transactions;
     }
