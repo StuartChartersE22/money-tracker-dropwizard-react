@@ -103,9 +103,11 @@ public class Transaction implements IDB {
     public List<Tag> getTags() {
         return tags;
     }
-
     public void setTags(List<Tag> tags) {
         this.tags = tags;
+    }
+    public void addTag(Tag tag) {
+        this.tags.add(tag);
     }
 
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
@@ -118,8 +120,10 @@ public class Transaction implements IDB {
     public List<Person> getLendings() {
         return lendings;
     }
-
     public void setLendings(List<Person> lendings) {
         this.lendings = lendings;
+    }
+    public void addLending(Person person){
+        this.lendings.add(person);
     }
 }

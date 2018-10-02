@@ -1,9 +1,6 @@
 package money_tracker;
 
-import money_tracker.core.repos.PersonRepo;
-import money_tracker.core.repos.TagRepo;
-import money_tracker.core.repos.TransactionRepo;
-import money_tracker.core.repos.TripRepo;
+import money_tracker.db.Seed;
 import money_tracker.health.ResourceHealthCheck;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -24,6 +21,8 @@ public class TrackerApplication extends Application<TrackerConfiguration> {
 
     @Override
     public void run(TrackerConfiguration configuration, Environment environment) {
+
+        Seed.seedData();
 
         DateFormat trackerDateFormat = new SimpleDateFormat(configuration.getDateFormat());
         environment.getObjectMapper().setDateFormat(trackerDateFormat);
